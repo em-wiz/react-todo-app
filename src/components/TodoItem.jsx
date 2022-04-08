@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
+
 
 class TodoItem extends Component{
 
@@ -7,7 +8,9 @@ class TodoItem extends Component{
             <li>{this.props.todo.title}</li>
         );
     }
-
 }
 
 export default TodoItem;
+
+
+
