@@ -25,11 +25,50 @@ class TodoContainer extends Component {
         ]
     };
 
+    // prefered method to update checkbox state, This enables us to keep strict mode in our index.js and yet allow the checkbox to toggle when clicked, also a 'return{}' statement can be used for the setState callback instead of wrapping it around a 'parenthesis()'
+    handleChange = (id) => {
+      this.setState(prevState => ({
+        todos: prevState.todos.map(todo => {
+          if(todo.id === id){
+            return {
+              ...todo,
+              completed: !todo.completed
+            }
+          }
+          return todo
+        }),
+      }))
+    };
+
+     //update checkbox state (method 2)
+    // handleChange = (id) => {
+    //   this.setState(prevState => ({
+    //     todos: prevState.todos.map(todo => {
+    //       if(todo.id === id){
+    //         todo.completed = !todo.completed
+    //       }
+    //       return todo
+    //     }),
+    //   }))
+    // };
+
+    //update checkbox state (method 1)
+    // handleChange = (id) => {
+    //   this.setState({
+    //     todos: this.state.todos.map(todo => {
+    //       if(todo.id === id){
+    //         todo.completed = !todo.completed;
+    //       }
+    //       return todo;
+    //     })
+    //   })
+    // };
+
   render() {
     return (
       <div>
         <Header />
-        <TodosList todos={this.state.todos} />
+        <TodosList todos={this.state.todos} handleChangeProps={this.handleChange} />
       </div>
     )
   }
