@@ -10,8 +10,11 @@ class TodoItem extends Component{
                     type="checkbox"
                     checked={this.props.todoItem.completed}
                     onChange={() => this.props.handleChangeProps(this.props.todoItem.id)}
-                    />
-                    {this.props.todoItem.title}
+                />
+                <button onClick={() => this.props.deleteTodoProps(this.props.todoItem.id)}>
+                    Delete
+                </button>
+                {this.props.todoItem.title}
             </li>
         );
     }
